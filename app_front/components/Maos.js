@@ -15,7 +15,7 @@ export default ({mao}) => (
         
             @keyframes decrease {
                 from {
-                transform: rotate(45deg);
+                    transform: rotate(45deg);
                 }
 
                 to {
@@ -26,7 +26,6 @@ export default ({mao}) => (
             .hand {
                 display: flex;
                 justify-content: center;
-                align-items: center;
             }
 
             .hand-img {
@@ -45,7 +44,7 @@ export default ({mao}) => (
         <Ajuda/>
         <h1 style={{ textAlign: "center" }}>Utilize a mão Direita</h1>
         <div className="hand">
-            <a style={{ width: "25%"}} href="exercicio">
+            <a href="exercicio">
             <img
             className="hand-img"
             src={`/static/misc/${mao}`}
