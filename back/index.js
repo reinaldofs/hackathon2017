@@ -157,6 +157,34 @@ questoes.create({
   hand: "right"
 })
 
+questoes.create({
+  text: 'Selecione a cor <span style="color: blue">Azul</span>?',
+  audio: "selecione-a-cor-azul.mp3",
+  alternatives: {
+    a: "BolaAmarela.png",
+    b: "TrianguloAzul.png",
+    c: "QuadradoAmarelo.png",
+    d: "TrianguloAmarelo.png"
+  },
+  answer: "b",
+  active: true,
+  hand: "right"
+})
+
+questoes.create({
+  text: 'Selecione a cor <span style="color: red">Vermelha</span>?',
+  audio: "selecione-a-cor-vermelha.mp3",
+  alternatives: {
+    a: "BolaAzul.png",
+    b: "QuadradoAzul.png",
+    c: "TrianguloAzul.png",
+    d: "QuadradoVermelho.png"
+  },
+  answer: "d",
+  active: true,
+  hand: "right"
+})
+
 const pacientes = app.service("pacientes")
 
 pacientes.create({ nome: "Guilherme", warning: false })
