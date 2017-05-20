@@ -1,18 +1,22 @@
-import Router from 'next/router'
-import Maos from '../components/Maos.js'
+import Router from "next/router"
+import Maos from "../components/Maos.js"
 import Menu from "../components/Menu.js"
 
+if (!process.tapEventInjected) {
+  injectTapEventPlugin()
+  process.tapEventInjected = true
+}
 
 export default class PreExercicio extends React.Component {
-    componentDidMount() {
-        setTimeout(() => {
-            Router.push(`/exercicio`);
-        }, 5000)
-    }
+  componentDidMount() {
+    setTimeout(() => {
+      Router.push(`/exercicio`)
+    }, 5000)
+  }
 
-    render() {
-        return (
-    <div>
+  render() {
+    return (
+      <div>
         <style global jsx>{`
           body {
             width: 100;
@@ -23,9 +27,9 @@ export default class PreExercicio extends React.Component {
             background: #f5f5f5;
           }    
       `}</style>
-        <Menu title="Inicio"/>
-        <Maos mao="mao-direita.png"/>
-    </div>
-
-        )};
+        <Menu title="Inicio" />
+        <Maos mao="mao-direita.png" />
+      </div>
+    )
+  }
 }
