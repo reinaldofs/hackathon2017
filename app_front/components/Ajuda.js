@@ -24,10 +24,9 @@ export default () => (
             .img-faq {
                 display: block;
                 position: absolute;
-                margin-top: 10px;
                 margin-left: 94%;
-                width: 4%;
-                height: 4%;
+                width: 5%;
+                height: auto;
                 transform: scale(1, 1);
                 animation-duration: 0.5s;
                 animation-name: decrease;
