@@ -81,6 +81,7 @@
     cores = ['red','yellow','cyan'];
     corAtual = '';
     achou = false;
+    alowRead = false;
 
     function randomColor(){
       var cor = '';
@@ -106,6 +107,15 @@
       // muda a cor do body
       document.body.style.setProperty('background-color', corBody);
       document.getElementById('txtCor').innerHTML = txt;
+
+      var msg = document.getElementById("txtErro");
+      msg.style.setProperty('visibility', 'hidden');
+
+      alowRead = false;
+
+      setTimeout(()=>{
+        alowRead = true;
+      }, 1000);
     };
 
     var tmrHide = null;
@@ -165,7 +175,12 @@
             img.style.setProperty('left', x);
             img.style.setProperty('top', y);
             img.style.setProperty('visibility', 'visible');
-            hideImgOk();
+
+            if (alowRead){
+              hideImgOk();
+            }
+            var msg = document.getElementById("txtErro");
+            msg.style.setProperty('visibility', 'hidden');
           }else{
             var msg = document.getElementById("txtErro");
             msg.style.setProperty('visibility', 'visible');
