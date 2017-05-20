@@ -3,6 +3,7 @@ const bodyParser = require("body-parser")
 const rest = require("feathers-rest")
 const socketio = require("feathers-socketio")
 const memory = require("feathers-memory")
+const cors = require("cors")
 
 // Create a feathers instance.
 const app = feathers()
@@ -12,6 +13,7 @@ const app = feathers()
   .configure(socketio())
   // Turn on JSON parser for REST services
   .use(bodyParser.json())
+  .use(cors())
   // Turn on URL-encoded parser for REST services
   .use(bodyParser.urlencoded({ extended: true }))
 
@@ -57,7 +59,8 @@ questoes.create({
     b: "QuadradoVerde.png",
     c: "TrianguloAzul.png"
   },
-  answer: "b"
+  answer: "b",
+  active: true
 })
 
 questoes.create({
@@ -68,7 +71,8 @@ questoes.create({
     b: "QuadradoVerde.png",
     c: "TrianguloAzul.png"
   },
-  answer: "c"
+  answer: "c",
+  active: true
 })
 
 questoes.create({
@@ -79,7 +83,8 @@ questoes.create({
     b: "QuadradoVerde.png",
     c: "TrianguloAzul.png"
   },
-  answer: "a"
+  answer: "a",
+  active: true
 })
 
 const pacientes = app.service("pacientes")

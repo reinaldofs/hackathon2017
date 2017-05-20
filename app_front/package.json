@@ -9,6 +9,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "feathers": "^2.1.2",
+    "feathers-rest": "^1.7.2",
     "isomorphic-fetch": "^2.2.1",
     "material-ui": "^0.18.1",
     "next": "^2.4.0",

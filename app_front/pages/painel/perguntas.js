@@ -16,6 +16,13 @@ import {
 } from "material-ui/Table"
 import "isomorphic-fetch"
 
+const feathers = require("feathers/client")
+const rest = require("feathers-rest/client")
+const host = "http://localhost:3030"
+const app = feathers().configure(rest(host).fetch(fetch))
+
+const questions = app.service("questions")
+
 // Make sure react-tap-event-plugin only gets injected once
 // Needed for material-ui
 if (!process.tapEventInjected) {
@@ -30,6 +37,12 @@ const muiTheme = {
 }
 
 class Main extends Component {
+  constructor() {
+    super()
+
+    this.state = { overrides: {} }
+  }
+
   static async getInitialProps({ req }) {
     // Ensures material-ui renders the correct css prefixes server-side
     let userAgent
@@ -39,62 +52,50 @@ class Main extends Component {
       userAgent = req.headers["user-agent"]
     }
 
-    const res = await fetch("http://localhost:3030/respostas")
-    const data = await res.json()
-
     const questoes = await fetch("http://localhost:3030/questions")
     const questoesData = await questoes.json()
 
-    return { userAgent, respostas: data.data, questoes: questoesData.data }
+    return { userAgent, questoes: questoesData.data }
   }
 
   render() {
-    const { userAgent, respostas, questoes } = this.props
+    const { userAgent, questoes } = this.props
 
-    const isCorrect = resposta => {
-      const quest = questoes.filter(q => q.id == resposta.id_questao)[0]
-
-      if (!quest) return false
-
-      console.log(JSON.stringify(quest) + "   -   " + JSON.stringify(resposta))
-
-      return quest.answer == resposta.resposta
+    const getStatus = questao => {
+      if (this.state.overrides[questao.id] !== undefined)
+        return this.state.overrides[questao.id]
+      else return questao.active
     }
 
     return (
       <MuiThemeProvider muiTheme={getMuiTheme({ userAgent, ...muiTheme })}>
         <div>
           <AppBar
-            title="Guilherme"
+            title="Perguntas"
             iconClassNameRight="muidocs-icon-navigation-expand-more"
           />
-          <h2
-            style={{ fontFamily: "'Roboto', sans-serif", textAlign: "center" }}
-          >
-            Respostas
-          </h2>
-          <Table>
-            <TableHeader
-              displaySelectAll={false}
-              adjustForCheckbox={false}
-              enableSelectAll={false}
-            >
+          <Table multiSelectable={true}>
+            <TableHeader>
               <TableRow>
                 <TableHeaderColumn>Número</TableHeaderColumn>
-                <TableHeaderColumn>Acertou?</TableHeaderColumn>
-                <TableHeaderColumn>Tempo de resposta</TableHeaderColumn>
+                <TableHeaderColumn>Texto</TableHeaderColumn>
               </TableRow>
             </TableHeader>
-            <TableBody displayRowCheckbox={false}>
-              {respostas.map(resposta => (
-                <TableRow>
-                  <TableRowColumn>{resposta.id_questao}</TableRowColumn>
-                  <TableRowColumn>
-                    {isCorrect(resposta)
-                      ? <span style={{ color: "green" }}>Sim</span>
-                      : <span style={{ color: "red" }}>Não</span>}
-                  </TableRowColumn>
-                  <TableRowColumn>{resposta.tempo_de_resposta}</TableRowColumn>
+            <TableBody>
+              {questoes.map(questao => (
+                <TableRow
+                  selected={getStatus(questao)}
+                  onTouchTap={() =>
+                    questions
+                      .patch(questao.id, { active: !getStatus(questao) })
+                      .then(({ active }) => {
+                        const over = { ...this.state.overrides }
+                        over[questao.id] = active
+                        this.setState({ overrides: over })
+                      })}
+                >
+                  <TableRowColumn>{questao.id}</TableRowColumn>
+                  <TableRowColumn>{questao.text}</TableRowColumn>
                 </TableRow>
               ))}
             </TableBody>
