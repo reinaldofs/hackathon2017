@@ -52,7 +52,7 @@ app.use(
 const questoes = app.service("questions")
 
 questoes.create({
-  text: "Qual é o quadrado?",
+  text: 'Qual é o <span style="color: green">quadrado</span>?',
   audio: "aaaa",
   alternatives: {
     a: "BolaAmarela.png",
