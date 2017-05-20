@@ -44,11 +44,10 @@ export default ({mao}) => (
         <Ajuda/>
         <h1 style={{ textAlign: "center" }}>Utilize a mão Direita</h1>
         <div className="hand">
-            <a href="exercicio">
             <img
             className="hand-img"
             src={`/static/misc/${mao}`}
-        /></a>
+        />
         </div>
     </div>
 )

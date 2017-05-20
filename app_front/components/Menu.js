@@ -6,8 +6,8 @@ import { List, ListItem } from "material-ui/List"
 import ActionGrade from "material-ui/svg-icons/action/grade"
 import { deepOrange500 } from "material-ui/styles/colors"
     
-//import injectTapEventPlugin from 'react-tap-event-plugin';
-//injectTapEventPlugin();
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 export default ({title}) => (
     <div>
