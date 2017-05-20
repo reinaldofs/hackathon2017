@@ -27,10 +27,6 @@ Avrgirl.list(function(err, ports) {
 	});  
 });
 
-
-
-
-
 // Variaveis para o controle da posicao do ponteiro
 var incX = 0; // Incremento X
 var incY = 0; // Incremento Y
@@ -109,7 +105,6 @@ function mouseAction(){
 	}else{
 		rightClicked = false;
 	}
-
 }
 
 

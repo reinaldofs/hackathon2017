@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>tracking.js - color with camera</title>
+  <link rel="stylesheet" href="assets/demo.css">
+
+  <script src="js/tracking-min.js"></script>
+  <script src="js/dat.gui.min.js"></script>
+  <script src="assets/stats.min.js"></script>
+  <script src="assets/color_camera_gui.js"></script>
+
+  <style>
+  video, canvas {
+    margin-left: 100px;
+    margin-top: 35px;
+    position: absolute;
+  }
+  .hidden-container{
+    visibility: hidden;
+  }
+  .dg{
+    visibility: hidden;
+  }
+  #stats{
+    visibility: hidden;
+  }
+  #imgOK{
+     width: 200px;
+     height: auto;
+     position: absolute;
+     visibility: hidden;
+  }
+
+  body{
+    background-color: RGB(255, 126, 137);
+  }
+  </style>
+</head>
+<body>
+
+
+    <div class="hidden-container">
+      <video id="video" width="600" height="450" preload autoplay loop muted controls></video>
+      <canvas id="canvas" width="600" height="450"></canvas>
+    </div>
+
+  <script>
+    cores = ['red','yellow','cyan'];
+    corAtual = '';
+
+    function randomColor(){
+      var cor = '';
+      do{
+        cor = cores[Math.floor((Math.random() * 3))];  
+      }while(cor==corAtual);
+      corAtual = cor;
+      var corBody = '';
+      if (cor=='red'){
+        corBody = '#f44336';
+      }
+      if (cor=='yellow'){
+        corBody = '#ffeb3b';
+      }
+      if (cor=='cyan'){
+        corBody = '#2196f3';
+      }
+
+      // muda a cor do body
+      document.body.style.setProperty('background-color', corBody);
+    };
+
+    var tmrHide = null;
+    function hideImgOk(){
+      clearTimeout(tmrHide);
+      tmrHide = setTimeout(()=>{
+        var img = document.getElementById("imgOK");
+        img.style.setProperty('visibility', 'hidden');
+        randomColor();
+      }, 500);
+    }
+    window.onload = function() {
+      var video = document.getElementById('video');
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
+      var tracker = new tracking.ColorTracker(['magenta', 'cyan', 'yellow']);
+      
+      tracking.ColorTracker.registerColor('red', function(r, g, b) {
+        if (r > 190 && g < 126 && b < 137) {
+          return true;
+        }
+        return false;
+      });
+
+      tracking.track('#video', tracker, { camera: true });
+      tracker.on('track', function(event) {
+        //console.log("track", event);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        event.data.forEach(function(rect) {
+          if (rect.color === 'custom') {
+            rect.color = tracker.customColor;
+          }
+          context.strokeStyle = rect.color;
+          context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+          context.font = '11px Helvetica';
+          context.fillStyle = "#fff";
+          context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
+          context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
+
+          console.log(rect.color, rect.x, rect.y);
+
+          var img = document.getElementById("imgOK");
+          var x = Math.round((1-(rect.x/600)) * window.innerWidth);
+          var y = Math.round((rect.y/450) * window.innerHeight);
+          x = x+"px";
+          y = y+"px";
+
+          img.style.setProperty('left', x);
+          img.style.setProperty('top', y);
+          img.style.setProperty('visibility', 'visible');
+          hideImgOk();
+        });
+      });
+     initGUIControllers(tracker);
+    };
+  </script>
+<img src="img/ok.png" id="imgOK">
+</body>
+</html>
