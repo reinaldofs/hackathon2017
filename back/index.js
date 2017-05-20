@@ -52,12 +52,12 @@ app.use(
 const questoes = app.service("questions")
 
 questoes.create({
-  text: 'Qual é o <span style="color: green">quadrado</span>?',
+  text: 'Selecione o elemento diferente?',
   audio: "aaaa",
   alternatives: {
-    a: "BolaAmarela.png",
-    b: "QuadradoVerde.png",
-    c: "TrianguloAzul.png"
+    a: "BolaAzul.png",
+    b: "QuadradoAzul.png",
+    c: "BolaAzul.png"
   },
   answer: "b",
   active: true,
@@ -65,11 +65,63 @@ questoes.create({
 })
 
 questoes.create({
-  text: "Qual é o triangulo?",
+  text: 'Selecione o elemento diferente?',
+  audio: "aaaa",
+  alternatives: {
+    a: "BolaVermelha.png",
+    b: "TrianguloVermelho.png",
+    c: "TrianguloVermelho.png"
+  },
+  answer: "a",
+  active: true,
+  hand: "right"
+})
+
+questoes.create({
+  text: 'Selecione o elemento diferente?',
+  audio: "aaaa",
+  alternatives: {
+    a: "QuadradoAmarelo.png",
+    b: "QuadradoAmarelo.png",
+    c: "TrianguloAmarelo.png"
+  },
+  answer: "c",
+  active: true,
+  hand: "right"
+})
+
+questoes.create({
+  text: 'Selecione o elemento diferente?',
+  audio: "aaaa",
+  alternatives: {
+    a: "BolaVerde.png",
+    b: "QuadradoVerde.png",
+    c: "BolaVerde.png"
+  },
+  answer: "b",
+  active: true,
+  hand: "right"
+})
+
+questoes.create({
+  text: 'Selecione a <span style="color: red">Bola Vermelha</span>?',
   audio: "aaaa",
   alternatives: {
     a: "BolaAmarela.png",
-    b: "QuadradoVerde.png",
+    b: "BolaVermelha.png",
+    c: "BolaAmarela.png"
+  },
+  answer: "b",
+  active: true,
+  hand: "right"
+})
+
+questoes.create({
+  text: 'Selecione o <span style="color: blue">Triangulo Azul</span>?',
+  audio: "aaaa",
+  alternatives: {
+    a: "TrianguloVermelho.png",
+    b: "TrianguloVermelho.png",
     c: "TrianguloAzul.png"
   },
   answer: "c",
@@ -78,16 +130,29 @@ questoes.create({
 })
 
 questoes.create({
-  text: "Qual é o circulo?",
+  text: 'Selecione o <span style="color: yellow">Quadrado Amarelo</span>?',
   audio: "aaaa",
   alternatives: {
-    a: "BolaAmarela.png",
+    a: "QuadradoAmarelo.png",
     b: "QuadradoVerde.png",
-    c: "TrianguloAzul.png"
+    c: "QuadradoVerde.png"
   },
   answer: "a",
   active: true,
-  hand: "left"
+  hand: "right"
+})
+
+questoes.create({
+  text: 'Selecione o <span style="color: green">Bola Verde</span>?',
+  audio: "aaaa",
+  alternatives: {
+    a: "TrianguloVerde.png",
+    b: "TrianguloVerde.png",
+    c: "BolaVerde.png"
+  },
+  answer: "c",
+  active: true,
+  hand: "right"
 })
 
 const pacientes = app.service("pacientes")
