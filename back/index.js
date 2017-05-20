@@ -52,21 +52,8 @@ app.use(
 const questoes = app.service("questions")
 
 questoes.create({
-  text: 'Selecione o elemento diferente?',
-  audio: "aaaa",
-  alternatives: {
-    a: "BolaAzul.png",
-    b: "QuadradoAzul.png",
-    c: "BolaAzul.png"
-  },
-  answer: "b",
-  active: true,
-  hand: "right"
-})
-
-questoes.create({
-  text: 'Selecione o elemento diferente?',
-  audio: "aaaa",
+  text: 'Selecione o objeto diferente?',
+  audio: "selecione-o-objeto-diferente.mp3",
   alternatives: {
     a: "BolaVermelha.png",
     b: "TrianguloVermelho.png",
@@ -78,8 +65,8 @@ questoes.create({
 })
 
 questoes.create({
-  text: 'Selecione o elemento diferente?',
-  audio: "aaaa",
+  text: 'Selecione o Triangulo?',
+  audio: "selecione-o-triangulo.mp3",
   alternatives: {
     a: "QuadradoAmarelo.png",
     b: "QuadradoAmarelo.png",
@@ -91,12 +78,12 @@ questoes.create({
 })
 
 questoes.create({
-  text: 'Selecione o elemento diferente?',
-  audio: "aaaa",
+  text: 'Selecione o Quadrado?',
+  audio: "selecione-o-quadrado.mp3",
   alternatives: {
-    a: "BolaVerde.png",
-    b: "QuadradoVerde.png",
-    c: "BolaVerde.png"
+    a: "BolaAzul.png",
+    b: "QuadradoAzul.png",
+    c: "BolaAzul.png"
   },
   answer: "b",
   active: true,
@@ -104,8 +91,8 @@ questoes.create({
 })
 
 questoes.create({
-  text: 'Selecione a <span style="color: red">Bola Vermelha</span>?',
-  audio: "aaaa",
+  text: 'Selecione a cor <span style="color: red">Vermelha</span>?',
+  audio: "selecione-a-cor-vermelha.mp3",
   alternatives: {
     a: "BolaAmarela.png",
     b: "BolaVermelha.png",
@@ -117,8 +104,8 @@ questoes.create({
 })
 
 questoes.create({
-  text: 'Selecione o <span style="color: blue">Triangulo Azul</span>?',
-  audio: "aaaa",
+  text: 'Selecione a cor <span style="color: blue">Azul</span>?',
+  audio: "selecione-a-cor-azul.mp3",
   alternatives: {
     a: "TrianguloVermelho.png",
     b: "TrianguloVermelho.png",
@@ -130,12 +117,12 @@ questoes.create({
 })
 
 questoes.create({
-  text: 'Selecione o <span style="color: yellow">Quadrado Amarelo</span>?',
-  audio: "aaaa",
+  text: 'Selecione a cor <span style="color: yellow">Amarela</span>?',
+  audio: "selecione-a-cor-amarela.mp3",
   alternatives: {
     a: "QuadradoAmarelo.png",
-    b: "QuadradoVerde.png",
-    c: "QuadradoVerde.png"
+    b: "QuadradoAzul.png",
+    c: "QuadradoAzul.png"
   },
   answer: "a",
   active: true,
@@ -143,14 +130,29 @@ questoes.create({
 })
 
 questoes.create({
-  text: 'Selecione o <span style="color: green">Bola Verde</span>?',
-  audio: "aaaa",
+  text: 'Selecione o objeto diferente?',
+  audio: "selecione-o-objeto-diferente.mp3",
   alternatives: {
-    a: "TrianguloVerde.png",
-    b: "TrianguloVerde.png",
-    c: "BolaVerde.png"
+    a: "TrianguloVermelho.png",
+    b: "TrianguloVermelho.png",
+    c: "TrianguloVermelho.png",
+    d: "BolaVermelha.png"
   },
-  answer: "c",
+  answer: "d",
+  active: true,
+  hand: "right"
+})
+
+questoes.create({
+  text: 'Selecione o Quadrado?',
+  audio: "selecione-o-quadrado.mp3",
+  alternatives: {
+    a: "BolaAzul.png",
+    b: "QuadradoAzul.png",
+    c: "BolaAzul.png",
+    d: "BolaAzul.png"
+  },
+  answer: "b",
   active: true,
   hand: "right"
 })

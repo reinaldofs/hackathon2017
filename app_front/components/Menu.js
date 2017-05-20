@@ -12,13 +12,17 @@ export default ({ title }) => (
           .menu {
             margin: 0;
             color: white;
-            font-weight: bold;
+            font-weight: bold;;
           }    
+
+          a {
+            text-decoration: none
+          }
       `}</style>
     <MuiThemeProvider muiTheme={getMuiTheme({})}>
       <div>
         <AppBar
-          iconElementLeft={<h2 className="menu">Pratix</h2>}
+          iconElementLeft={<a href="pre-exercicio"><h2 className="menu">Pratix</h2></a>}
           iconElementRight={<h2 className="menu">{`${title}`}</h2>}
         />
       </div>
