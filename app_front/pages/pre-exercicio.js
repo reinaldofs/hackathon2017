@@ -1,6 +1,7 @@
 import Router from "next/router"
 import Maos from "../components/Maos.js"
 import Menu from "../components/Menu.js"
+import injectTapEventPlugin from "react-tap-event-plugin"
 
 if (!process.tapEventInjected) {
   injectTapEventPlugin()
