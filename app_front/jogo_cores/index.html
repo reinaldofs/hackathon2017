@@ -51,6 +51,17 @@
     font-size: 3vw;
     color: #FFF;
   }
+  .txtErro{
+    background-color: transparent;
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    font-size: 3vw;
+    color: #FFF;
+    visibility: hidden;
+  }
   body{
     background-color: RGB(255, 126, 137);
     overflow: hidden;
@@ -106,6 +117,16 @@
         randomColor();
       }, 100);
     }
+
+    var tmrHideErro = null;
+    function hideErro(){
+      clearTimeout(tmrHideErro);
+      tmrHideErro = setTimeout(()=>{
+        var msg = document.getElementById("txtErro");
+        msg.style.setProperty('visibility', 'hidden');
+      }, 2000);
+
+    }
     window.onload = function() {
       var video = document.getElementById('video');
       var canvas = document.getElementById('canvas');
@@ -145,6 +166,10 @@
             img.style.setProperty('top', y);
             img.style.setProperty('visibility', 'visible');
             hideImgOk();
+          }else{
+            var msg = document.getElementById("txtErro");
+            msg.style.setProperty('visibility', 'visible');
+            hideErro();
           }
         });
       });
@@ -154,6 +179,7 @@
   </script>
   <div class="txtAcao">Levante o objeto</div>
   <div class="txtCor" id="txtCor">VERMELHO</div>
+  <div class="txtErro" id="txtErro">Oops.. Tente outra cor</div>
 <img src="img/ok.png" id="imgOK">
 
 </body>
