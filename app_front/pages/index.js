@@ -1,1 +1,4 @@
-export default () => <div>Hello World.</div>
+import Login from "../components/Login.js"
+export default () => <div>
+    <Login title="Login"/>
+</div>
