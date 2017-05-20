@@ -27,6 +27,10 @@ export default class PreExercicio extends React.Component {
             font-size: 26px;
             background: #f5f5f5;
           }    
+
+          ::-webkit-scrollbar { 
+            display: none; 
+          }
       `}</style>
         <Menu title="Inicio" />
         <Maos mao="mao-direita.png" />
