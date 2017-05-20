@@ -1,43 +1,39 @@
-export default () => (
-  <div>
-    <h1 style={{ textAlign: "center" }}>Qual é o quadrado?</h1>
-    <div>
-      <style jsx>{`
-         @keyframes grow {
-            from {
-                transform: scale(1, 1);
-            }
+import { Component } from "react"
+import Questao from "../components/Questao.js"
+import Acerto from "../components/Acerto.js"
+import Erro from "../components/Erro.js"
 
-            to {
-             transform: scale(1.2, 1.2);
-            }
-        }
-        
-        .alternativa {
-          transform: scale(1, 1);
-        }
+const QUESTAO = "QUESTAO"
+const ERRO = "ERRO"
+const ACERTO = "ACERTO"
 
-        .alternativa:hover {
-            transform: scale(1.2, 1.2);
-            animation-duration: 0.5s;
-            animation-name: grow;
-        }
-    `}</style>
-      <img
-        className="alternativa"
-        style={{ width: "33%" }}
-        src="https://oblogmenoslidodomundo.files.wordpress.com/2014/10/quadrado.jpg"
-      />
-      <img
-        className="alternativa"
-        style={{ width: "33%" }}
-        src="http://3.bp.blogspot.com/_N8rtcf8YfEo/R0YKb--LZPI/AAAAAAAAARI/jwCcX95MCI0/s320/Estado+do+Triangulo.JPG"
-      />
-      <img
-        className="alternativa"
-        style={{ width: "33%" }}
-        src="http://icon-icons.com/icons2/321/PNG/512/Circle_34541.png"
-      />
-    </div>
-  </div>
-)
+export default class Exercicio extends Component {
+  constructor() {
+    super()
+
+    this.state = { questionState: QUESTAO }
+  }
+
+  render() {
+    let toRender = <div />
+
+    switch (this.state.questionState) {
+      case ACERTO:
+        toRender = <Acerto />
+        break
+      case ERRO:
+        toRender = <Erro />
+        break
+    }
+
+    return (
+      <div>
+        <Questao
+          onAnswer={isRight =>
+            this.setState({ questionState: isRight ? ACERTO : ERRO })}
+        />
+        {toRender}
+      </div>
+    )
+  }
+}
