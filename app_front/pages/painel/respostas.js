@@ -67,6 +67,7 @@ class Main extends Component {
           <AppBar
             title="Guilherme"
             iconClassNameRight="muidocs-icon-navigation-expand-more"
+            onTouchTap={() => Router.push(`/painel/pacientes`)}
           />
           <h2
             style={{ fontFamily: "'Roboto', sans-serif", textAlign: "center" }}

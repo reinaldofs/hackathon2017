@@ -73,9 +73,10 @@ class Main extends Component {
           <AppBar
             title="Perguntas"
             iconClassNameRight="muidocs-icon-navigation-expand-more"
+            onTouchTap={() => Router.push(`/painel/pacientes`)}
           />
           <Table multiSelectable={true}>
-            <TableHeader>
+            <TableHeader displaySelectAll={false}>
               <TableRow>
                 <TableHeaderColumn>Número</TableHeaderColumn>
                 <TableHeaderColumn>Texto</TableHeaderColumn>
