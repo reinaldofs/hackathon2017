@@ -7,12 +7,19 @@ import { List, ListItem } from "material-ui/List"
 import ActionGrade from "material-ui/svg-icons/action/grade"
 import Router from "next/router"
 import "isomorphic-fetch"
+import { deepOrange500 } from "material-ui/styles/colors"
 
 // Make sure react-tap-event-plugin only gets injected once
 // Needed for material-ui
 if (!process.tapEventInjected) {
   injectTapEventPlugin()
   process.tapEventInjected = true
+}
+
+const muiTheme = {
+  palette: {
+    accent1Color: deepOrange500
+  }
 }
 
 class Main extends Component {
@@ -49,7 +56,7 @@ class Main extends Component {
           <List>
             {pacientes.map(paciente => (
               <ListItem
-                onTouchTap={() => Router.push(`/painel/paciente`)}
+                onTouchTap={() => Router.push(`/painel/respostas`)}
                 leftIcon={<ActionGrade />}
               >
                 {paciente.nome}
