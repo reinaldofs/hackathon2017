@@ -21,7 +21,7 @@ export default ({ onAnswer, enunciado, alternativas, resposta }) => (
       />
       <div className="images">
         {Object.keys(alternativas).map(letra => (
-          <div onClick={() => onAnswer(letra == resposta)}>
+          <div onClick={() => onAnswer(letra == resposta, letra)}>
             <Bloco img={alternativas[letra]} />
           </div>
         ))}
