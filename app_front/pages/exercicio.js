@@ -17,10 +17,11 @@ export default class Exercicio extends Component {
   }
 
   static async getInitialProps({ req }) {
-    const questoes = await fetch("http://localhost:3030/questions")
-    const questoesData = await questoes.json()
+    const questoesRaw = await fetch("http://localhost:3030/questions")
+    const questoesData = await questoesRaw.json()
 
-    return { questoes: questoesData.data }
+    const questoes = questoesData.data.filter(q => q.active)
+    return { questoes }
   }
 
   render() {
