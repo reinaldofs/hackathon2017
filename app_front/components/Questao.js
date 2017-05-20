@@ -7,7 +7,15 @@ export default ({ onAnswer }) => (
             margin-top: 5rem;
             display: inline-flex;
           }
+          #cursor{
+              cursor: url("http://emojipedia-us.s3.amazonaws.com/cache/16/59/16599a86ba26438673f9ebddc6d07fef.png"), auto;
+            }
+           .background{
+             background-color: yellow;
+            }
+
     `}</style>
+  <div id="cursor" class="background">
     <h1 style={{ textAlign: "center" }}>Qual é o quadrado?</h1>
     <div className="images">
 
@@ -25,4 +33,7 @@ export default ({ onAnswer }) => (
 
     </div>
   </div>
+      </div>
+
+
 )
