@@ -6,14 +6,30 @@ var SerialPort = require('serialport');
 var express = require('express'),
     app = express();
 
+// Auxiliar para detectar a porta do arduino
+var Avrgirl = require('avrgirl-arduino');
 
-// Conecta na porta serial para receber as coordenadas do joystick 
-var port = new SerialPort('/dev/cu.usbmodem14411', {
-  parser: SerialPort.parsers.readline('\n')
+var port = null;
+
+// Detecta a porta do arduino
+Avrgirl.list(function(err, ports) { 
+  ports.filter(p=>p.serialNumber!=undefined).map(p=>{
+  	console.log(p);
+		// Conecta na porta serial para receber as coordenadas do joystick 
+		port = new SerialPort(p.comName, {
+		  parser: SerialPort.parsers.readline('\n')
+		});
+
+		// Define o listener para leitura da porta serial
+		port.on('data', loop_arduino);
+		// Inicia a escuta de movimentacao do mouse
+		setInterval(mouseAction, tempoMovimento);
+	});  
 });
 
-// Define o listener para leitura da porta serial
-port.on('data', loop_arduino);
+
+
+
 
 // Variaveis para o controle da posicao do ponteiro
 var incX = 0; // Incremento X
@@ -96,8 +112,6 @@ function mouseAction(){
 
 }
 
-// Inicia a escuta de movimentacao do mouse
-setInterval(mouseAction, tempoMovimento);
 
 // inicia o servidor para fornecer para o
 var server = app.listen(1234);
