@@ -1,0 +1,16 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "feathers": "^2.1.2",
+    "feathers-memory": "^1.1.0",
+    "feathers-rest": "^1.7.2",
+    "feathers-socketio": "^2.0.0"
+  }
+}
