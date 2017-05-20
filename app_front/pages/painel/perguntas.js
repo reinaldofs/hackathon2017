@@ -98,7 +98,9 @@ class Main extends Component {
                       })}
                 >
                   <TableRowColumn>{questao.id}</TableRowColumn>
-                  <TableRowColumn>{questao.text}</TableRowColumn>
+                  <TableRowColumn>
+                    <span dangerouslySetInnerHTML={{ __html: questao.text }} />
+                  </TableRowColumn>
                   <TableRowColumn>
                     {questao.hand == "left" ? "esquerda" : "direita"}
                   </TableRowColumn>
