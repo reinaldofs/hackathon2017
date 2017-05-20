@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>tracking.js - color with camera</title>
+  <title>Jogo das Cores</title>
   <link rel="stylesheet" href="assets/demo.css">
 
   <script src="js/tracking-min.js"></script>
@@ -33,12 +33,22 @@
   }
   .txtCor{
     background-color: transparent;
-    position: fixed; /* or absolute */
+    position: fixed;
     top: 50%;
     left: 50%;
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
     font-size: 17vw;
+    color: #FFF;
+  }
+  .txtAcao{
+    background-color: transparent;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    font-size: 3vw;
     color: #FFF;
   }
   body{
@@ -111,7 +121,6 @@
 
       tracking.track('#video', tracker, { camera: true });
       tracker.on('track', function(event) {
-        //console.log("track", event);
         context.clearRect(0, 0, canvas.width, canvas.height);
         event.data.forEach(function(rect) {
           if (rect.color === 'custom') {
@@ -143,6 +152,7 @@
      randomColor();
     };
   </script>
+  <div class="txtAcao">Levante o objeto</div>
   <div class="txtCor" id="txtCor">VERMELHO</div>
 <img src="img/ok.png" id="imgOK">
 
