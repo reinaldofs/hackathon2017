@@ -68,20 +68,31 @@ class Main extends Component {
             title="Guilherme"
             iconClassNameRight="muidocs-icon-navigation-expand-more"
           />
+          <h2
+            style={{ fontFamily: "'Roboto', sans-serif", textAlign: "center" }}
+          >
+            Respostas
+          </h2>
           <Table>
-            <TableHeader>
+            <TableHeader
+              displaySelectAll={false}
+              adjustForCheckbox={false}
+              enableSelectAll={false}
+            >
               <TableRow>
                 <TableHeaderColumn>Número</TableHeaderColumn>
                 <TableHeaderColumn>Acertou?</TableHeaderColumn>
                 <TableHeaderColumn>Tempo de resposta</TableHeaderColumn>
               </TableRow>
             </TableHeader>
-            <TableBody>
+            <TableBody displayRowCheckbox={false}>
               {respostas.map(resposta => (
                 <TableRow>
                   <TableRowColumn>{resposta.id_questao}</TableRowColumn>
                   <TableRowColumn>
-                    {isCorrect(resposta) ? "Sim" : "Não"}
+                    {isCorrect(resposta)
+                      ? <span style={{ color: "green" }}>Sim</span>
+                      : <span style={{ color: "red" }}>Não</span>}
                   </TableRowColumn>
                   <TableRowColumn>{resposta.tempo_de_resposta}</TableRowColumn>
                 </TableRow>
