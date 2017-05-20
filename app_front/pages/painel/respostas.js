@@ -59,12 +59,22 @@ class Main extends Component {
 
       return quest.answer == resposta.resposta
     }
+    const pontuacao = respostas.reduce((prev, curr) => {
+      if (isCorrect(curr)) {
+        let penalidade = curr.tempo_de_resposta
+        if (penalidade > 9) penalidade = 9
+
+        return prev + 10 - penalidade
+      } else {
+        return prev - 5
+      }
+    }, 0)
 
     return (
       <MuiThemeProvider muiTheme={getMuiTheme({ userAgent, ...muiTheme })}>
         <div>
           <AppBar
-            title="Respostas"
+            title={`Respostas (pontuação: ${Number.parseInt(pontuacao)})`}
             iconClassNameRight="muidocs-icon-navigation-expand-more"
             onTouchTap={() => Router.push(`/painel/pacientes`)}
           />
