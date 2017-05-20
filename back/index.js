@@ -52,7 +52,7 @@ app.use(
 const questoes = app.service("questions")
 
 questoes.create({
-  text: "Qual é o quadrado?",
+  text: 'Qual é o <span style="color: green">quadrado</span>?',
   audio: "aaaa",
   alternatives: {
     a: "BolaAmarela.png",
@@ -60,7 +60,8 @@ questoes.create({
     c: "TrianguloAzul.png"
   },
   answer: "b",
-  active: true
+  active: true,
+  hand: "right"
 })
 
 questoes.create({
@@ -72,7 +73,8 @@ questoes.create({
     c: "TrianguloAzul.png"
   },
   answer: "c",
-  active: true
+  active: true,
+  hand: "right"
 })
 
 questoes.create({
@@ -84,16 +86,17 @@ questoes.create({
     c: "TrianguloAzul.png"
   },
   answer: "a",
-  active: true
+  active: true,
+  hand: "left"
 })
 
 const pacientes = app.service("pacientes")
 
-pacientes.create({ nome: "Guilherme" })
-pacientes.create({ nome: "Bruno" })
-pacientes.create({ nome: "Fernando" })
-pacientes.create({ nome: "Gabriel" })
-pacientes.create({ nome: "Reinaldo" })
+pacientes.create({ nome: "Guilherme", warning: false })
+pacientes.create({ nome: "Bruno", warning: true })
+pacientes.create({ nome: "Fernando", warning: false })
+pacientes.create({ nome: "Gabriel", warning: false })
+pacientes.create({ nome: "Reinaldo", warning: false })
 
 const respostas = app.service("respostas")
 

@@ -30,7 +30,7 @@ Avrgirl.list(function(err, ports) {
 // Variaveis para o controle da posicao do ponteiro
 var incX = 0; // Incremento X
 var incY = 0; // Incremento Y
-var sensibilidade = 2; // Sensibilidade do ponteiro
+var sensibilidade = 1; // Sensibilidade do ponteiro
 var tempoMovimento = 1; // Tempo para movimentacao do cursor
 var leftClicked = false; // Botao esquerdo esta clicado?
 var rightClicked = false; // Botao direito esta clicado?

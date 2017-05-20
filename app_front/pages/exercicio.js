@@ -29,6 +29,7 @@ export default class Exercicio extends Component {
 
     return (
       <div>
+        <audio src="/static/audios/mostre-objeto-amarelo.mp3" autoPlay={true} />
         <style global jsx>{`
           body {
             width: 100;
@@ -39,7 +40,7 @@ export default class Exercicio extends Component {
             background: #f5f5f5;
           }    
       `}</style>
-        <Menu title="Exercicio 1"/>
+        <Menu title="Exercicio 1" />
         <Questao
           onAnswer={isRight =>
             this.setState({ questionState: isRight ? ACERTO : ERRO })}

@@ -81,6 +81,7 @@ class Main extends Component {
               <TableRow>
                 <TableHeaderColumn>Número</TableHeaderColumn>
                 <TableHeaderColumn>Texto</TableHeaderColumn>
+                <TableHeaderColumn>Mão</TableHeaderColumn>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -98,6 +99,9 @@ class Main extends Component {
                 >
                   <TableRowColumn>{questao.id}</TableRowColumn>
                   <TableRowColumn>{questao.text}</TableRowColumn>
+                  <TableRowColumn>
+                    {questao.hand == "left" ? "esquerda" : "direita"}
+                  </TableRowColumn>
                 </TableRow>
               ))}
             </TableBody>

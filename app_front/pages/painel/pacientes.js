@@ -5,6 +5,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider"
 import injectTapEventPlugin from "react-tap-event-plugin"
 import { List, ListItem } from "material-ui/List"
 import ActionGrade from "material-ui/svg-icons/action/grade"
+import Warning from "material-ui/svg-icons/alert/warning"
 import IconMenu from "material-ui/IconMenu"
 import Router from "next/router"
 import "isomorphic-fetch"
@@ -82,7 +83,7 @@ class Main extends Component {
           <List>
             {pacientes.map(paciente => (
               <ListItem
-                leftIcon={<ActionGrade />}
+                leftIcon={paciente.warning ? <Warning /> : <ActionGrade />}
                 rightIconButton={rightIconMenu}
               >
                 {paciente.nome}
