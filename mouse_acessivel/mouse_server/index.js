@@ -22,7 +22,7 @@ var sensibilidade = 2; // Sensibilidade do ponteiro
 var tempoMovimento = 1; // Tempo para movimentacao do cursor
 
 // Retorno para a aplicacao frontend
-var retorno = {direcao:{x:0,y:0}, botoes:{click:false}};
+var retorno = {direcao:{x:0,y:0}, botao:{joystick:false, clickBotao:false}};
 
 // Funcao que trata as leituras
 function loop_arduino(data){
@@ -46,9 +46,14 @@ function loop_arduino(data){
 		incY = 0;
 	}
 
+	console.log(values);
+
 	// o retorno para o frontend sera somente a direcao
 	retorno.direcao.x = incX > 0 ? 1 : incX < 0 ? -1 : 0;
 	retorno.direcao.y = incY > 0 ? 1 : incY < 0 ? -1 : 0;
+
+	// Escreve no retorno o status dos botoes
+	//retorno.botao.joystick = values[2].charAt(0)=='0';
 }
 
 
