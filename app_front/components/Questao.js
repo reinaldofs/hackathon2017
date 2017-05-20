@@ -1,9 +1,9 @@
-import Bloco from './Bloco'
-import Ajuda from '../components/Ajuda.js'
+import Bloco from "./Bloco"
+import Ajuda from "../components/Ajuda.js"
 
-export default ({ onAnswer }) => (
+export default ({ onAnswer, enunciado, alternativas, resposta }) => (
   <div className="body">
-     <style jsx>{`          
+    <style jsx>{`          
           .images {
             display: inline-flex;
             margin-top: 50px;
@@ -14,22 +14,17 @@ export default ({ onAnswer }) => (
           }
     `}</style>
     <div id="cursor">
-      <Ajuda/>
-      <h1 style={{ textAlign: "center"}}>Qual é o quadrado?</h1>
+      <Ajuda />
+      <h1
+        style={{ textAlign: "center" }}
+        dangerouslySetInnerHTML={{ __html: enunciado }}
+      />
       <div className="images">
-
-        <div onClick={() => onAnswer(false)}>
-          <Bloco img="BolaAmarela.png"/>
-        </div>
-        
-        <div onClick={() => onAnswer(false)}>
-          <Bloco img="BolaAmarela.png"/>
-        </div>      
-        
-        <div onClick={() => onAnswer(true)}>
-          <Bloco img="QuadradoAmarelo.png"/>
-        </div> 
-
+        {Object.keys(alternativas).map(letra => (
+          <div onClick={() => onAnswer(letra == resposta)}>
+            <Bloco img={alternativas[letra]} />
+          </div>
+        ))}
       </div>
     </div>
   </div>
