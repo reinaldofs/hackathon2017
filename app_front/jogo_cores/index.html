@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>tracking.js - color with camera</title>
+  <title>Jogo das Cores</title>
   <link rel="stylesheet" href="assets/demo.css">
 
   <script src="js/tracking-min.js"></script>
@@ -31,9 +31,41 @@
      position: absolute;
      visibility: hidden;
   }
-
+  .txtCor{
+    background-color: transparent;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    font-size: 17vw;
+    color: #FFF;
+  }
+  .txtAcao{
+    background-color: transparent;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    font-size: 3vw;
+    color: #FFF;
+  }
+  .txtErro{
+    background-color: transparent;
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    font-size: 3vw;
+    color: #FFF;
+    visibility: hidden;
+  }
   body{
     background-color: RGB(255, 126, 137);
+    overflow: hidden;
+
   }
   </style>
 </head>
@@ -48,6 +80,7 @@
   <script>
     cores = ['red','yellow','cyan'];
     corAtual = '';
+    achou = false;
 
     function randomColor(){
       var cor = '';
@@ -56,18 +89,23 @@
       }while(cor==corAtual);
       corAtual = cor;
       var corBody = '';
+      var txt = '';
       if (cor=='red'){
         corBody = '#f44336';
+        txt = "VERMELHO";
       }
       if (cor=='yellow'){
         corBody = '#ffeb3b';
+        txt = "AMARELO";
       }
       if (cor=='cyan'){
         corBody = '#2196f3';
+        txt = "AZUL";
       }
 
       // muda a cor do body
       document.body.style.setProperty('background-color', corBody);
+      document.getElementById('txtCor').innerHTML = txt;
     };
 
     var tmrHide = null;
@@ -77,7 +115,17 @@
         var img = document.getElementById("imgOK");
         img.style.setProperty('visibility', 'hidden');
         randomColor();
-      }, 500);
+      }, 100);
+    }
+
+    var tmrHideErro = null;
+    function hideErro(){
+      clearTimeout(tmrHideErro);
+      tmrHideErro = setTimeout(()=>{
+        var msg = document.getElementById("txtErro");
+        msg.style.setProperty('visibility', 'hidden');
+      }, 2000);
+
     }
     window.onload = function() {
       var video = document.getElementById('video');
@@ -94,7 +142,6 @@
 
       tracking.track('#video', tracker, { camera: true });
       tracker.on('track', function(event) {
-        //console.log("track", event);
         context.clearRect(0, 0, canvas.width, canvas.height);
         event.data.forEach(function(rect) {
           if (rect.color === 'custom') {
@@ -108,22 +155,32 @@
           context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
 
           console.log(rect.color, rect.x, rect.y);
+          if (rect.color == corAtual){
+            var img = document.getElementById("imgOK");
+            var x = Math.round((1-(rect.x/600)) * window.innerWidth);
+            var y = Math.round((rect.y/450) * window.innerHeight);
+            x = x+"px";
+            y = y+"px";
 
-          var img = document.getElementById("imgOK");
-          var x = Math.round((1-(rect.x/600)) * window.innerWidth);
-          var y = Math.round((rect.y/450) * window.innerHeight);
-          x = x+"px";
-          y = y+"px";
-
-          img.style.setProperty('left', x);
-          img.style.setProperty('top', y);
-          img.style.setProperty('visibility', 'visible');
-          hideImgOk();
+            img.style.setProperty('left', x);
+            img.style.setProperty('top', y);
+            img.style.setProperty('visibility', 'visible');
+            hideImgOk();
+          }else{
+            var msg = document.getElementById("txtErro");
+            msg.style.setProperty('visibility', 'visible');
+            hideErro();
+          }
         });
       });
      initGUIControllers(tracker);
+     randomColor();
     };
   </script>
+  <div class="txtAcao">Levante o objeto</div>
+  <div class="txtCor" id="txtCor">VERMELHO</div>
+  <div class="txtErro" id="txtErro">Oops.. Tente outra cor</div>
 <img src="img/ok.png" id="imgOK">
+
 </body>
 </html>
