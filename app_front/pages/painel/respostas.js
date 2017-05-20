@@ -6,6 +6,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider"
 import injectTapEventPlugin from "react-tap-event-plugin"
 import { List, ListItem } from "material-ui/List"
 import ActionGrade from "material-ui/svg-icons/action/grade"
+import Router from "next/router"
 import {
   Table,
   TableBody,
@@ -56,8 +57,6 @@ class Main extends Component {
 
       if (!quest) return false
 
-      console.log(JSON.stringify(quest) + "   -   " + JSON.stringify(resposta))
-
       return quest.answer == resposta.resposta
     }
 
@@ -65,14 +64,10 @@ class Main extends Component {
       <MuiThemeProvider muiTheme={getMuiTheme({ userAgent, ...muiTheme })}>
         <div>
           <AppBar
-            title="Guilherme"
+            title="Respostas"
             iconClassNameRight="muidocs-icon-navigation-expand-more"
+            onTouchTap={() => Router.push(`/painel/pacientes`)}
           />
-          <h2
-            style={{ fontFamily: "'Roboto', sans-serif", textAlign: "center" }}
-          >
-            Respostas
-          </h2>
           <Table>
             <TableHeader
               displaySelectAll={false}

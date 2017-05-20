@@ -1,4 +1,5 @@
 import Maos from '../components/Maos.js'
+import Menu from "../components/Menu.js"
 
 export default () => (
     <div>
@@ -8,11 +9,11 @@ export default () => (
             height: 100;
             font-family: Courier New;
             color: #212121;
-            text-shadow: 2px 2px 5px white;
             font-size: 26px;
             background: #f5f5f5;
           }    
       `}</style>
+        <Menu title="Inicio"/>
         <Maos mao="mao-direita.png"/>
     </div>
 )

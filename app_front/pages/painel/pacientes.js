@@ -5,9 +5,18 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider"
 import injectTapEventPlugin from "react-tap-event-plugin"
 import { List, ListItem } from "material-ui/List"
 import ActionGrade from "material-ui/svg-icons/action/grade"
+import IconMenu from "material-ui/IconMenu"
 import Router from "next/router"
 import "isomorphic-fetch"
-import { deepOrange500 } from "material-ui/styles/colors"
+import {
+  deepOrange500,
+  grey400,
+  darkBlack,
+  lightBlack
+} from "material-ui/styles/colors"
+import IconButton from "material-ui/IconButton"
+import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert"
+import MenuItem from "material-ui/MenuItem"
 
 // Make sure react-tap-event-plugin only gets injected once
 // Needed for material-ui
@@ -46,6 +55,23 @@ class Main extends Component {
   render() {
     const { userAgent, pacientes } = this.props
 
+    const iconButtonElement = (
+      <IconButton touch={true} tooltip="more" tooltipPosition="bottom-left">
+        <MoreVertIcon color={grey400} />
+      </IconButton>
+    )
+
+    const rightIconMenu = (
+      <IconMenu iconButtonElement={iconButtonElement}>
+        <MenuItem onTouchTap={() => Router.push(`/painel/perguntas`)}>
+          Perguntas
+        </MenuItem>
+        <MenuItem onTouchTap={() => Router.push(`/painel/respostas`)}>
+          Respostas
+        </MenuItem>
+      </IconMenu>
+    )
+
     return (
       <MuiThemeProvider muiTheme={getMuiTheme({ userAgent, ...muiTheme })}>
         <div>
@@ -56,8 +82,8 @@ class Main extends Component {
           <List>
             {pacientes.map(paciente => (
               <ListItem
-                onTouchTap={() => Router.push(`/painel/respostas`)}
                 leftIcon={<ActionGrade />}
+                rightIconButton={rightIconMenu}
               >
                 {paciente.nome}
               </ListItem>
