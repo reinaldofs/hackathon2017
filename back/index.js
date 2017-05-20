@@ -60,7 +60,8 @@ questoes.create({
     c: "TrianguloAzul.png"
   },
   answer: "b",
-  active: true
+  active: true,
+  hand: "right"
 })
 
 questoes.create({
@@ -72,7 +73,8 @@ questoes.create({
     c: "TrianguloAzul.png"
   },
   answer: "c",
-  active: true
+  active: true,
+  hand: "right"
 })
 
 questoes.create({
@@ -84,7 +86,8 @@ questoes.create({
     c: "TrianguloAzul.png"
   },
   answer: "a",
-  active: true
+  active: true,
+  hand: "left"
 })
 
 const pacientes = app.service("pacientes")
