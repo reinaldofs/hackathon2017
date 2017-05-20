@@ -1,7 +1,17 @@
+import Router from 'next/router'
 import Maos from '../components/Maos.js'
 import Menu from "../components/Menu.js"
 
-export default () => (
+
+export default class PreExercicio extends React.Component {
+    componentDidMount() {
+        setTimeout(() => {
+            Router.push(`/exercicio`);
+        }, 5000)
+    }
+
+    render() {
+        return (
     <div>
         <style global jsx>{`
           body {
@@ -16,4 +26,6 @@ export default () => (
         <Menu title="Inicio"/>
         <Maos mao="mao-direita.png"/>
     </div>
-)
+
+        )};
+}
