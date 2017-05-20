@@ -6,6 +6,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider"
 import injectTapEventPlugin from "react-tap-event-plugin"
 import { List, ListItem } from "material-ui/List"
 import ActionGrade from "material-ui/svg-icons/action/grade"
+import Router from "next/router"
 import {
   Table,
   TableBody,
@@ -55,8 +56,6 @@ class Main extends Component {
       const quest = questoes.filter(q => q.id == resposta.id_questao)[0]
 
       if (!quest) return false
-
-      console.log(JSON.stringify(quest) + "   -   " + JSON.stringify(resposta))
 
       return quest.answer == resposta.resposta
     }
