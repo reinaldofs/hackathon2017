@@ -6,6 +6,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider"
 import injectTapEventPlugin from "react-tap-event-plugin"
 import { List, ListItem } from "material-ui/List"
 import ActionGrade from "material-ui/svg-icons/action/grade"
+import Router from "next/router"
 import {
   Table,
   TableBody,
@@ -73,7 +74,7 @@ class Main extends Component {
           <AppBar
             title="Perguntas"
             iconClassNameRight="muidocs-icon-navigation-expand-more"
-            onTouchTap={() => Router.push(`/painel/pacientes`)}
+            onLeftIconButtonTouchTap={() => Router.push(`/painel/pacientes`)}
           />
           <Table multiSelectable={true}>
             <TableHeader displaySelectAll={false}>
