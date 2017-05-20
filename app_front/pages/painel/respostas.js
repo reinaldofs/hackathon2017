@@ -65,15 +65,10 @@ class Main extends Component {
       <MuiThemeProvider muiTheme={getMuiTheme({ userAgent, ...muiTheme })}>
         <div>
           <AppBar
-            title="Guilherme"
+            title="Respostas"
             iconClassNameRight="muidocs-icon-navigation-expand-more"
             onTouchTap={() => Router.push(`/painel/pacientes`)}
           />
-          <h2
-            style={{ fontFamily: "'Roboto', sans-serif", textAlign: "center" }}
-          >
-            Respostas
-          </h2>
           <Table>
             <TableHeader
               displaySelectAll={false}
