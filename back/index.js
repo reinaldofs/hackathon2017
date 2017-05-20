@@ -52,7 +52,7 @@ app.use(
 const questoes = app.service("questions")
 
 questoes.create({
-  text: 'Selecione o objeto diferente?',
+  text: "Selecione o objeto diferente?",
   audio: "selecione-o-objeto-diferente.mp3",
   alternatives: {
     a: "BolaVermelha.png",
@@ -65,7 +65,7 @@ questoes.create({
 })
 
 questoes.create({
-  text: 'Selecione o Triangulo?',
+  text: "Selecione o Triangulo?",
   audio: "selecione-o-triangulo.mp3",
   alternatives: {
     a: "QuadradoAmarelo.png",
@@ -78,7 +78,7 @@ questoes.create({
 })
 
 questoes.create({
-  text: 'Selecione o Quadrado?',
+  text: "Selecione o Quadrado?",
   audio: "selecione-o-quadrado.mp3",
   alternatives: {
     a: "BolaAzul.png",
@@ -130,7 +130,7 @@ questoes.create({
 })
 
 questoes.create({
-  text: 'Selecione o objeto diferente?',
+  text: "Selecione o objeto diferente?",
   audio: "selecione-o-objeto-diferente.mp3",
   alternatives: {
     a: "TrianguloVermelho.png",
@@ -144,7 +144,7 @@ questoes.create({
 })
 
 questoes.create({
-  text: 'Selecione o Quadrado?',
+  text: "Selecione o Quadrado?",
   audio: "selecione-o-quadrado.mp3",
   alternatives: {
     a: "BolaAzul.png",
@@ -170,25 +170,25 @@ const respostas = app.service("respostas")
 respostas.create({
   id_questao: "1",
   resposta: "a",
-  tempo_de_resposta: 100,
+  tempo_de_resposta: 1,
   id_paciente: "1"
 })
 respostas.create({
   id_questao: "2",
   resposta: "a",
-  tempo_de_resposta: 300,
+  tempo_de_resposta: 3,
   id_paciente: "1"
 })
 respostas.create({
   id_questao: "3",
   resposta: "c",
-  tempo_de_resposta: 140,
+  tempo_de_resposta: 1,
   id_paciente: "1"
 })
 respostas.create({
   id_questao: "4",
   resposta: "d",
-  tempo_de_resposta: 120,
+  tempo_de_resposta: 2,
   id_paciente: "1"
 })
 
