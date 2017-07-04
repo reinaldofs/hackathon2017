@@ -2,7 +2,7 @@
 Projeto vencedor do Hackathon da UNISEP em 2017.
 
 # Equipe Pratix
-* [Bruno] Russi Latutenshlager
+* [Bruno] Russi Lautenshlager
 * [Fernando] Lucas Gontijo
 * [Gabriel] Souza de Paula
 * [Guilherme] Cunha Guimarães
